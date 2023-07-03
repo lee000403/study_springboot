@@ -19,52 +19,52 @@ public class CarCompanyController {
     @Autowired
     CarCompanyService carCompanyService;
 
-    // /selectSearch_COM/NAME/자
-    // /selectSearch_COM/ID/1
-    @GetMapping("/selectSearch_COM/{search}/{words}")
+    // /CarCompany/Search/NAME/자
+    // /CarCompany/Search/ID/1
+    @GetMapping("/CarCompany/Search/{search}/{words}")
     public ResponseEntity selectSearch(@PathVariable String search, @PathVariable String words) {
         Object result = carCompanyService.selectSearch(search, words);
         return ResponseEntity.ok().body(result);
     }
 
-    // /selectAll_COM/C001
-    @GetMapping("/selectAll_COM/{COMPANY_ID}")
+    // /CarCompany/SearchAll/C001
+    @GetMapping("/CarCompany/SearchAll/{COMPANY_ID}")
     public ResponseEntity selectAll(@PathVariable String COMPANY_ID) {
         Object result = carCompanyService.selectAll(COMPANY_ID);
         return ResponseEntity.ok().body(result);
     }
 
-    // /selectDetail_COM/C002
-    @GetMapping("/selectDetail_COM/{COMPANY_ID}")
+    // /CarCompany/selectDetail/C002
+    @GetMapping("/CarCompany/selectDetail/{COMPANY_ID}")
     public ResponseEntity selectDetail(@PathVariable String COMPANY_ID) {
         Object result = carCompanyService.selectDetail(COMPANY_ID);
         return ResponseEntity.ok().body(result);
     }
 
     // /폭스바겐, C006
-    @PostMapping("/insert_COM")
+    @PostMapping("/CarCompany/insert")
     public ResponseEntity insert(@RequestBody Map paramMap) {
         Object result = carCompanyService.insert(paramMap);
         return ResponseEntity.ok().body(result);
     }
 
     // 폭스바겐을 페라리 변경
-    @PutMapping("/update_COM")
+    @PutMapping("/CarCompany/update")
     public ResponseEntity update(@RequestBody Map paramMap) {
         Object result = carCompanyService.update(paramMap);
         return ResponseEntity.ok().body(result);
     }
 
     // C006 삭제
-    // /delete_COM/C006
-    @DeleteMapping("/delete_COM/{COMPANY_ID}")
+    // /CarCompany/delete/C006
+    @DeleteMapping("/CarCompany/delete/{COMPANY_ID}")
     public ResponseEntity delete(@PathVariable String COMPANY_ID) {
         Object result = carCompanyService.delete(COMPANY_ID);
         return ResponseEntity.ok().body(result);
     }
 
     
-    @PostMapping("/insertDouble_COM") // 원래는 url 부분에 단어를 넣어주지 않는다.
+    @PostMapping("CarCompany/insertDouble") // 원래는 url 부분에 단어를 넣어주지 않는다.
     public ResponseEntity insertDouble(@RequestBody Map paramMap) {
         Object result = null;
         try {

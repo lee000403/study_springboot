@@ -17,7 +17,7 @@ public class CarCompanyService {
 
     public Object selectSearch(String search, String words) {
         // Object getOne(String sqlMapId, Object dataMap)
-        String sqlMapId = "CarCompany.selectSearch_COM";
+        String sqlMapId = "CarCompany.CarCompany/Search";
         HashMap<String, String> datatMap = new HashMap<String, String>();
         datatMap.put("search", search);
         datatMap.put("words", words);
@@ -27,7 +27,7 @@ public class CarCompanyService {
 
     public Object selectAll(String COMPANY_ID) {
         // Object getOne(String sqlMapId, Object dataMap)
-        String sqlMapId = "CarCompany.selectAll_COM";
+        String sqlMapId = "CarCompany.CarCompany/SearchAll";
         HashMap<String, String> datatMap = new HashMap<String, String>();
         datatMap.put("COMPANY_ID", COMPANY_ID);
         Object result = sharedDao.getList(sqlMapId, datatMap);
@@ -35,7 +35,7 @@ public class CarCompanyService {
     }
 
     public Object selectDetail(String COMPANY_ID) {
-        String sqlMapId = "CarCompany.selectDetail_COM";
+        String sqlMapId = "CarCompany.CarCompany/selectDetail";
         HashMap<String, String> datatMap = new HashMap<String, String>();
         datatMap.put("COMPANY_ID", COMPANY_ID);
         Object result = sharedDao.getOne(sqlMapId, datatMap);
@@ -43,20 +43,20 @@ public class CarCompanyService {
     }
 
     public Object insert(Map dataMap) {
-        String sqlMapId = "CarCompany.insert_COM";
+        String sqlMapId = "CarCompany.CarCompany/insert";
         Object result = sharedDao.insert(sqlMapId, dataMap);
         return result;
     }
 
     public Object update(Map dataMap) {
-        String sqlMapId = "CarCompany.update_COM";
+        String sqlMapId = "CarCompany.CarCompany/update";
         Object result = sharedDao.update(sqlMapId, dataMap);
         return result;
     }
 
     public Object delete(String COMPANY_ID) {
-        String sqlMapId = "CarCompany.delete_COM";
-        HashMap dataMap = new HashMap<>();
+        String sqlMapId = "CarCompany.CarCompany/delete";
+        HashMap<String, String> dataMap = new HashMap<String, String>();
         dataMap.put("COMPANY_ID", COMPANY_ID);
 
         Object result = sharedDao.delete(sqlMapId, dataMap);
