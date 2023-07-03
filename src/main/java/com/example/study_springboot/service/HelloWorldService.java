@@ -3,10 +3,22 @@ package com.example.study_springboot.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.study_springboot.dao.SharedDao;
 
 @Service
 public class HelloWorldService {
+    @Autowired
+    SharedDao sharedDao;
+    public int fakeSelect(String companyId) {
+        HashMap dataMap = new HashMap<>();
+        dataMap.put("companyId", companyId);
+        sharedDao.getOne("fake.selectByUID", dataMap);
+        return 0;
+    }
+
     public ArrayList fakeSelect(String currentPage, String perPage) {
                 // "spm_row": 471, "SN": 1, "CMPNM": "로이유통", "RDNMADR": null
         // "spm_row": 571, "SN": 2, "CMPNM": "의료유통", "RDNMADR": 3
@@ -25,5 +37,5 @@ public class HelloWorldService {
         resultMap.put("RDNMADR", 3);
         arrayList.add(resultMap);
         return arrayList;
-    }    
+    }
 }
