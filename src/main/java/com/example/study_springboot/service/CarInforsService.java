@@ -15,32 +15,41 @@ public class CarInforsService {
     @Autowired // 네이밍 룰이 안겹치게 설정해주기.
     SharedDao sharedDao;
 
+    // foreach HashMap.put("CAR_INFOR_ID_LIST", CAR_INFOR_ID_LIST)
+    public Object selectInUID(Map dataMap) {
+        // Object getOne(String sqlMapId, Object dataMap)
+        String sqlMapId = "CarInfors.selectInUID";
+
+        Object result = sharedDao.getList(sqlMapId, dataMap);
+        return result;
+    }
+
     // 검색(조건-search : YEAR, CAR_NAME)
     public Object selectSearch(String search, String words) {
         // Object getOne(String sqlMapId, Object dataMap)
         String sqlMapId = "CarInfors.selectSearch";
-        HashMap<String, String> datatMap = new HashMap<String, String>();
-        datatMap.put("search", search);
-        datatMap.put("words", words);
-        Object result = sharedDao.getList(sqlMapId, datatMap);
+        HashMap<String, String> dataMap = new HashMap<String, String>();
+        dataMap.put("search", search);
+        dataMap.put("words", words);
+        Object result = sharedDao.getList(sqlMapId, dataMap);
         return result;
     }
 
     public Object selectAll(String CAR_INFOR_ID) {
         // Object getOne(String sqlMapId, Object dataMap)
         String sqlMapId = "CarInfors.selectAll";
-        HashMap<String, String> datatMap = new HashMap<String, String>();
-        datatMap.put("CAR_INFOR_ID", CAR_INFOR_ID);
-        Object result = sharedDao.getList(sqlMapId, datatMap);
+        HashMap<String, String> dataMap = new HashMap<String, String>();
+        dataMap.put("CAR_INFOR_ID", CAR_INFOR_ID);
+        Object result = sharedDao.getList(sqlMapId, dataMap);
         return result;
     }
 
     public Object selectDetail(String CAR_INFOR_ID) {
         // Object getOne(String sqlMapId, Object dataMap)
         String sqlMapId = "CarInfors.selectByUID"; // xml 파일에서 namespace 랑 해당 id를 결합해서 유니크한 id를 만들어서 사용한다.
-        HashMap<String, String> datatMap = new HashMap<String, String>();
-        datatMap.put("CAR_INFOR_ID", CAR_INFOR_ID);
-        Object result = sharedDao.getOne(sqlMapId, datatMap);
+        HashMap<String, String> dataMap = new HashMap<String, String>();
+        dataMap.put("CAR_INFOR_ID", CAR_INFOR_ID);
+        Object result = sharedDao.getOne(sqlMapId, dataMap);
         return result;
     }
 
@@ -74,5 +83,6 @@ public class CarInforsService {
         result = sharedDao.insert(sqlMapId, dataMap);
         return result;
     }
+
 
 }

@@ -18,6 +18,18 @@
         </choose>
 	</select>
 
+    <!--  mybatis foreach Map.put("CAR_INFOR_ID_LIST", CAR_INFOR_ID_LIST)-->
+	<select id="selectInUID" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM car_infors
+        where 1 = 1
+        and CAR_INFOR_ID in 
+        <foreach item="CAR_INFOR_ID" index="index" collection="CAR_INFOR_ID_LIST"
+        open="(" separator="," close=")" nullable="true">
+            #{CAR_INFOR_ID} <!-- CAR_INFOR_ID 가 들어온다. -->
+        </foreach>
+	</select>
+
     <!-- 전체 -->
 	<select id="selectAll" parameterType="Map" resultType="Map">
         SELECT * 

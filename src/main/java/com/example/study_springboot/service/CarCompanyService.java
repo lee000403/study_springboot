@@ -18,27 +18,27 @@ public class CarCompanyService {
     public Object selectSearch(String search, String words) {
         // Object getOne(String sqlMapId, Object dataMap)
         String sqlMapId = "CarCompany.CarCompany/Search";
-        HashMap<String, String> datatMap = new HashMap<String, String>();
-        datatMap.put("search", search);
-        datatMap.put("words", words);
-        Object result = sharedDao.getList(sqlMapId, datatMap);
+        HashMap<String, String> dataMap = new HashMap<String, String>();
+        dataMap.put("search", search);
+        dataMap.put("words", words);
+        Object result = sharedDao.getList(sqlMapId, dataMap);
         return result;
     }
 
     public Object selectAll(String COMPANY_ID) {
         // Object getOne(String sqlMapId, Object dataMap)
         String sqlMapId = "CarCompany.CarCompany/SearchAll";
-        HashMap<String, String> datatMap = new HashMap<String, String>();
-        datatMap.put("COMPANY_ID", COMPANY_ID);
-        Object result = sharedDao.getList(sqlMapId, datatMap);
+        HashMap<String, String> dataMap = new HashMap<String, String>();
+        dataMap.put("COMPANY_ID", COMPANY_ID);
+        Object result = sharedDao.getList(sqlMapId, dataMap);
         return result;
     }
 
     public Object selectDetail(String COMPANY_ID) {
         String sqlMapId = "CarCompany.CarCompany/selectDetail";
-        HashMap<String, String> datatMap = new HashMap<String, String>();
-        datatMap.put("COMPANY_ID", COMPANY_ID);
-        Object result = sharedDao.getOne(sqlMapId, datatMap);
+        HashMap<String, String> dataMap = new HashMap<String, String>();
+        dataMap.put("COMPANY_ID", COMPANY_ID);
+        Object result = sharedDao.getOne(sqlMapId, dataMap);
         return result;
     }
 
