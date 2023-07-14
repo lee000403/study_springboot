@@ -16,7 +16,7 @@ import com.example.study_springboot.service.CarInforsService;
 
 // 데이터만 리턴하는 형식일땐 restcontroller 사용
 @RestController
-public class CarInforsController {
+public class CarInforsRestController {
     @Autowired
     CarInforsService carInforsService;
 

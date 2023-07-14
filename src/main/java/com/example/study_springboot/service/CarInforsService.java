@@ -25,6 +25,14 @@ public class CarInforsService {
     }
 
     // 검색(조건-search : YEAR, CAR_NAME)
+    public Object selectSearch(Map dataMap) {
+        // Object getOne(String sqlMapId, Object dataMap)
+        String sqlMapId = "CarInfors.selectSearch";
+        Object result = sharedDao.getList(sqlMapId, dataMap);
+        return result;
+    }
+
+    // 검색(조건-search : YEAR, CAR_NAME)
     public Object selectSearch(String search, String words) {
         // Object getOne(String sqlMapId, Object dataMap)
         String sqlMapId = "CarInfors.selectSearch";
@@ -65,6 +73,28 @@ public class CarInforsService {
         return result;
     }
 
+    // MVC VIEW에 사용된다.
+    public Object delete(Map dataMap) {
+        String sqlMapId = "CarInfors.delete";
+
+        Object result = sharedDao.delete(sqlMapId, dataMap);
+        return result;
+    }
+
+    // MVC (delete and select 함께 프로젝트에 이런 방식 사용 사용. 위의 delete 함수를 활용한 것)
+    public Object deleteAndSelectSearch(Map dataMap) { // 원자화된 delete 나 selectSearch 등의 함수를 사용하는 것이다.
+        HashMap result = new HashMap<>();
+        // String sqlMapId = "CarInfors.delete";
+        // result.put("deletecount", sharedDao.delete(sqlMapId, dataMap));
+        result.put("deletecount", this.delete(dataMap));
+
+        // sqlMapId = "CarInfors.search";
+        // result.put("resultList", sharedDao.getOne(sqlMapId, dataMap));
+        result.put("resultList", this.selectSearch(dataMap));
+        return result;
+    }
+
+    // Rest API 에 사용
     public Object delete(String CAR_INFOR_ID) {
         String sqlMapId = "CarInfors.delete";
         HashMap dataMap = new HashMap<>();
@@ -83,6 +113,5 @@ public class CarInforsService {
         result = sharedDao.insert(sqlMapId, dataMap);
         return result;
     }
-
 
 }
